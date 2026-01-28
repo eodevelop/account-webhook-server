@@ -23,8 +23,19 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("tools.jackson.module:jackson-module-kotlin")
+
+    // Exposed (Kotlin SQL Framework)
+    implementation("org.jetbrains.exposed:exposed-core:1.0.0")
+    implementation("org.jetbrains.exposed:exposed-jdbc:1.0.0")
+    implementation("org.jetbrains.exposed:exposed-java-time:1.0.0")
+
+    // SQLite
+    implementation("org.xerial:sqlite-jdbc:3.47.1.0")
+
+    // Test
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testImplementation("io.mockk:mockk:1.13.13")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
