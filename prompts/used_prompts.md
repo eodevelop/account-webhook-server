@@ -150,4 +150,16 @@ WebhookServiceTest에 실패 케이스도 추가해줘
 - 존재하지 않는 계정 업데이트 시 FAILED
 ```
 
+### 프롬프트 19
+```
+컨트롤러 레이어 테스트 코드 추가해줘
+@WebMvcTest + MockMvc + SpringMockK 조합으로
+WebhookController, AccountController, InboxController 각각
+
+테스트 케이스:
+- 정상 요청 시 200/201 응답
+- 존재하지 않는 리소스 조회 시 404
+- 서명 검증 실패/헤더 누락 시 401
+```
+
 ---
