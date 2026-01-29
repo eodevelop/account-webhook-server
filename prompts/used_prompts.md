@@ -162,4 +162,16 @@ WebhookController, AccountController, InboxController 각각
 - 서명 검증 실패/헤더 누락 시 401
 ```
 
+### 프롬프트 20
+```
+레파지토리 레이어 테스트 코드 추가해줘
+Exposed + H2 인메모리 DB로 통합 테스트
+AccountRepository, WebhookEventRepository 각각
+
+테스트 케이스:
+- 저장/조회/업데이트 성공
+- 존재하지 않는 데이터 조회 시 null 반환
+- 상태 변경 시 updatedAt/processedAt 설정 확인
+```
+
 ---
