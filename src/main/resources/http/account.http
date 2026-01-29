@@ -1,5 +1,11 @@
 ### Account API 테스트
 
+### 계정 생성 (테스트용)
+POST http://localhost:8080/accounts
+Content-Type: application/json
+
+{"accountKey":"acc-12345","email":"user@example.com"}
+
 ### 계정 조회 - 존재하는 계정
 GET http://localhost:8080/accounts/acc-12345
 Accept: application/json

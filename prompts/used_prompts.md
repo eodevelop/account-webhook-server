@@ -118,4 +118,10 @@ APPLE_ACCOUNT_DELETED: 상태를 APPLE_DELETED로
 EventType enum 만들고 WebhookRequest에서 eventType을 String 대신 enum으로 받게 해줘
 ```
 
+### 프롬프트 15
+```
+테스트용 계정 생성 API 추가해줘
+POST /accounts - accountKey, email 받아서 계정 생성
+```
+
 ---
