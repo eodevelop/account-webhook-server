@@ -174,4 +174,18 @@ AccountRepository, WebhookEventRepository 각각
 - 상태 변경 시 updatedAt/processedAt 설정 확인
 ```
 
+### 프롬프트 21
+```
+@SpringBootTest 사용하는 통합 테스트도 만들어줘
+전체 애플리케이션 컨텍스트 로드하고 실제 HTTP 요청으로 E2E 플로우 테스트
+MockMvc + 테스트용 프로파일(application-test.properties)
+
+테스트 시나리오:
+- 계정 생성 → 웹훅 수신 → 상태 변경 확인 (전체 플로우)
+- 이메일 변경 웹훅 처리 플로우
+- 중복 이벤트 처리 방지 (같은 eventId로 재전송)
+- 서명 검증 실패 시 401 응답
+- 존재하지 않는 계정/이벤트 처리
+```
+
 ---
