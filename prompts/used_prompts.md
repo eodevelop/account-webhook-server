@@ -63,3 +63,31 @@ EventResponse: eventId, eventType, status, createdAt, processedAt
 ```
 
 ---
+
+## 4단계: 서명 검증
+
+### 프롬프트 8
+```
+HMAC-SHA256으로 웹훅 서명 검증하는 SignatureValidator 만들어줘
+secret은 application.properties에서 주입받고
+payload랑 signature 비교해서 boolean 반환
+```
+
+### 프롬프트 9
+```
+HandlerInterceptor로 컨트롤러 도달 전에 서명 검증하고 싶어
+/webhooks/** 경로에만 적용되게
+```
+
+### 프롬프트 10
+```
+Filter로 request wrapper 씌우고 Interceptor에서 검증하는 방식으로 해줘
+```
+
+### 프롬프트 11
+```
+resources/http 폴더에 컨트롤러별로 .http 파일 만들어서 테스트할 수 있게 해줘
+서명 값도 계산해서 넣어줘
+```
+
+---

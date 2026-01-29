@@ -1,0 +1,9 @@
+### Inbox (Event) API 테스트
+
+### 이벤트 조회 - 존재하는 이벤트
+GET http://localhost:8080/inbox/events/evt-001
+Accept: application/json
+
+### 이벤트 조회 - 존재하지 않는 이벤트 (404 예상)
+GET http://localhost:8080/inbox/events/non-existent-event
+Accept: application/json

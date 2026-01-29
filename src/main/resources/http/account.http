@@ -1,0 +1,9 @@
+### Account API 테스트
+
+### 계정 조회 - 존재하는 계정
+GET http://localhost:8080/accounts/acc-12345
+Accept: application/json
+
+### 계정 조회 - 존재하지 않는 계정 (404 예상)
+GET http://localhost:8080/accounts/non-existent-key
+Accept: application/json

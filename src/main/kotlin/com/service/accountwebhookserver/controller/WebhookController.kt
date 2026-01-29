@@ -18,11 +18,9 @@ class WebhookController(
 
     @PostMapping("/account-changes")
     fun receiveWebhook(
-        @RequestHeader("X-Signature") signature: String,
         @RequestHeader("X-Event-Id") eventId: String,
         @RequestBody request: WebhookRequest,
     ): ResponseEntity<WebhookResponse> {
-        // TODO: 서명 검증 로직 구현
         val response = webhookService.receiveWebhook(eventId, request)
         return ResponseEntity.ok(response)
     }
