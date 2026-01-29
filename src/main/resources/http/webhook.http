@@ -1,35 +1,35 @@
 ### Webhook API 테스트
 
-### 계정 변경 웹훅 수신 - 계정 생성
-POST http://localhost:8080/webhooks/account-changes
-Content-Type: application/json
-X-Event-Id: evt-001
-X-Signature: CDEznbvZp2mghLqYTDjIzzbJXUkHGyijQLGUtyE+SS8=
-
-{"accountKey":"acc-12345","eventType":"ACCOUNT_CREATED","data":{"email":"user@example.com"}}
-
-### 계정 변경 웹훅 수신 - 이메일 변경
+### 이메일 변경 (EMAIL_FORWARDING_CHANGED)
 POST http://localhost:8080/webhooks/account-changes
 Content-Type: application/json
 X-Event-Id: evt-002
-X-Signature: DydYafj8RwK8aMWVCTcJgrFzBlYI1QO64UOLnz7B5iQ=
+X-Signature: 21y1oGPq253cuEnozFURjEycLSZK2f9GPaNWdsugQG8=
 
-{"accountKey":"acc-12345","eventType":"EMAIL_CHANGED","data":{"oldEmail":"user@example.com","newEmail":"newuser@example.com"}}
+{"accountKey":"acc-12345","eventType":"EMAIL_FORWARDING_CHANGED","data":{"email":"newuser@example.com"}}
 
-### 계정 변경 웹훅 수신 - 계정 삭제
+### 계정 삭제 (ACCOUNT_DELETED)
 POST http://localhost:8080/webhooks/account-changes
 Content-Type: application/json
-X-Event-Id: evt-003
+X-Event-Id: evt-002
 X-Signature: eNtqwyHlTz0UYcak9WaWuPijUgSBdASYv1APUrl3CUw=
 
 {"accountKey":"acc-12345","eventType":"ACCOUNT_DELETED","data":{}}
+
+### Apple 계정 삭제 (APPLE_ACCOUNT_DELETED)
+POST http://localhost:8080/webhooks/account-changes
+Content-Type: application/json
+X-Event-Id: evt-003
+X-Signature: 7k4vCEk9E7Ket27ZT4G8gATlYf/xwsJ/5WnVY3+rJK0=
+
+{"accountKey":"acc-12345","eventType":"APPLE_ACCOUNT_DELETED","data":{}}
 
 ### 서명 없이 요청 (401 에러 예상)
 POST http://localhost:8080/webhooks/account-changes
 Content-Type: application/json
 X-Event-Id: evt-004
 
-{"accountKey":"acc-12345","eventType":"ACCOUNT_CREATED","data":{}}
+{"accountKey":"acc-12345","eventType":"ACCOUNT_DELETED","data":{}}
 
 ### 잘못된 서명으로 요청 (401 에러 예상)
 POST http://localhost:8080/webhooks/account-changes
@@ -37,4 +37,4 @@ Content-Type: application/json
 X-Event-Id: evt-005
 X-Signature: invalid-signature
 
-{"accountKey":"acc-12345","eventType":"ACCOUNT_CREATED","data":{}}
+{"accountKey":"acc-12345","eventType":"ACCOUNT_DELETED","data":{}}

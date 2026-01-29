@@ -101,3 +101,21 @@ X-Event-Id 헤더로 중복 체크해서 같은 이벤트 여러 번 와도 한 
 ```
 
 ---
+
+## 6단계: 이벤트 처리 로직
+
+### 프롬프트 13
+```
+eventType별로 실제 계정 처리 로직 구현해줘
+EMAIL_FORWARDING_CHANGED: 이메일 변경
+ACCOUNT_DELETED: 상태를 DELETED로
+APPLE_ACCOUNT_DELETED: 상태를 APPLE_DELETED로
+처리 중 PROCESSING, 완료 시 DONE, 실패 시 FAILED로 이벤트 상태 업데이트
+```
+
+### 프롬프트 14
+```
+EventType enum 만들고 WebhookRequest에서 eventType을 String 대신 enum으로 받게 해줘
+```
+
+---

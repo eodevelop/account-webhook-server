@@ -8,7 +8,9 @@ import org.jetbrains.exposed.v1.core.eq
 import org.jetbrains.exposed.v1.jdbc.insert
 import org.jetbrains.exposed.v1.jdbc.select
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
+import org.jetbrains.exposed.v1.jdbc.update
 import org.springframework.stereotype.Repository
+import java.time.Instant
 
 @Repository
 class WebhookEventRepository {
@@ -22,6 +24,21 @@ class WebhookEventRepository {
         }
 
         findByEventIdInternal(eventId)!!
+    }
+
+    fun updateStatus(
+        eventId: String,
+        status: EventStatus,
+        errorMessage: String? = null,
+    ): EventResponse? = transaction {
+        val updated = WebhookEvents.update({ WebhookEvents.eventId eq eventId }) {
+            it[WebhookEvents.status] = status.name
+            it[WebhookEvents.errorMessage] = errorMessage
+            if (status == EventStatus.DONE || status == EventStatus.FAILED) {
+                it[processedAt] = Instant.now()
+            }
+        }
+        if (updated > 0) findByEventIdInternal(eventId) else null
     }
 
     fun findByEventId(eventId: String): EventResponse? = transaction {
