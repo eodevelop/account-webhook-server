@@ -37,3 +37,29 @@ Exposed에서 DB 연결하고 앱 시작할 때 테이블 자동생성되게 설
 ```
 
 ---
+
+## 3단계: 기본 API 구조
+
+### 프롬프트 6
+```
+웹훅 서버 기본 API 구조 만들어줘
+
+Controller:
+- WebhookController: POST /webhooks/account-changes
+- AccountController: GET /accounts/{accountKey}
+- InboxController: GET /inbox/events/{eventId}
+
+Service, Repository도 같이
+```
+
+### 프롬프트 7
+```
+Request/Response DTO 만들어줘
+
+WebhookRequest: accountKey, eventType, data(Map)
+WebhookResponse: status, message
+AccountResponse: accountKey, email, status
+EventResponse: eventId, eventType, status, createdAt, processedAt
+```
+
+---
