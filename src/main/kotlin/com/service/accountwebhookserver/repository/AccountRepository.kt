@@ -44,12 +44,6 @@ class AccountRepository {
         findByAccountKeyInternal(accountKey)
     }
 
-    fun existsByAccountKey(accountKey: String): Boolean = transaction {
-        Accounts.select(Accounts.id)
-            .where { Accounts.accountKey eq accountKey }
-            .count() > 0
-    }
-
     private fun findByAccountKeyInternal(accountKey: String): AccountResponse? {
         return Accounts.select(Accounts.columns)
             .where { Accounts.accountKey eq accountKey }
