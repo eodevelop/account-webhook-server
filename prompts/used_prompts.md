@@ -125,3 +125,29 @@ POST /accounts - accountKey, email 받아서 계정 생성
 ```
 
 ---
+
+## 7단계: 테스트 코드 작성
+
+### 프롬프트 16
+```
+서비스 레이어 단위 테스트 만들어줘
+MockK로 Repository mock하고
+WebhookService, AccountService, EventService 테스트
+Given-When-Then 패턴으로
+```
+
+### 프롬프트 17
+```
+테스트용 더미 데이터 생성하는 DummyModelFactory 만들어줘
+Datafaker 써서 랜덤 데이터 생성
+WebhookRequest, AccountResponse, EventResponse 등
+```
+
+### 프롬프트 18
+```
+WebhookServiceTest에 실패 케이스도 추가해줘
+- email 누락 시 FAILED
+- 존재하지 않는 계정 업데이트 시 FAILED
+```
+
+---
